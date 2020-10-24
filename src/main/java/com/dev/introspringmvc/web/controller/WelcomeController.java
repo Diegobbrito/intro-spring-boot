@@ -20,5 +20,4 @@ public class WelcomeController {
         System.out.println("Fui chamado no teste");
         return view;
     }
-
 }
