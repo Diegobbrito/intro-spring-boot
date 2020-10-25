@@ -9,9 +9,10 @@ public class WelcomeController {
 
     @GetMapping("/")
     public String welcome(){
-        System.out.println("Fui chamado");
-        return "welcome";
+//        return "welcome";
+        return  "redirect:/usuario/todos";
     }
+
 
     @GetMapping("/teste")
     public ModelAndView teste(){
