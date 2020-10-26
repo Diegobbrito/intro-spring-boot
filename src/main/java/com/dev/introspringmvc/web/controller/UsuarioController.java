@@ -1,6 +1,7 @@
 package com.dev.introspringmvc.web.controller;
 
 import com.dev.introspringmvc.dao.UsuarioDao;
+import com.dev.introspringmvc.domain.TipoSexo;
 import com.dev.introspringmvc.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ public class UsuarioController {
 
     @GetMapping("/cadastro")
     public String cadastro(@ModelAttribute("usuario") Usuario usuario, ModelMap model){
+        model.addAttribute("sexos", TipoSexo.values());
         return "/user/add";
     }
 
