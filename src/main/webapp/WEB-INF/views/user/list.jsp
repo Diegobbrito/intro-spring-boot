@@ -36,7 +36,8 @@
                     <td>${usuario.id}</td>
                     <td>${usuario.nome }&nbsp;${usuario.sobrenome}</td>
                     <td>
-                        <a class="btn btn-info" href="#">Editar</a>
+                        <spring:url value="/usuario/update/${usuario.id}" var="update"/>
+                        <a class="btn btn-info" href="${update}">Editar</a>
                         <a class="btn btn-danger" href="#">Excluir</a>
                     </td>
                 </tr>
