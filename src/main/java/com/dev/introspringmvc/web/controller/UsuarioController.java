@@ -6,9 +6,12 @@ import com.dev.introspringmvc.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("usuario")
@@ -30,7 +33,10 @@ public class UsuarioController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("usuario") Usuario usuario, RedirectAttributes attr){
+    public String save(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr){
+        if(result.hasErrors()){
+            return "user/add";
+        }
         dao.salvar(usuario);
         attr.addFlashAttribute("message", "Usuário salvo com sucesso");
         return "redirect:/usuario/todos";
@@ -45,7 +51,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/update")
-    public ModelAndView update(@ModelAttribute("usuario") Usuario usuario, RedirectAttributes attr){
+    public ModelAndView update(@Valid @ModelAttribute("usuario") Usuario usuario, BindingResult result, RedirectAttributes attr){
+        if(result.hasErrors()) return new ModelAndView("user/add");
+
         dao.editar(usuario);
         attr.addFlashAttribute("message", "Usuário atualizado com sucesso");
         return new ModelAndView("redirect:/usuario/todos");
