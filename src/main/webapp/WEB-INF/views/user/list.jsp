@@ -5,6 +5,8 @@
 <html>
 <head>
     <title>Lista de Usuarios</title>
+    <spring:url var="css" value="/static/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="${css}"/>
 </head>
 <body>
 
@@ -14,11 +16,11 @@
 </div>
 <div>
     <spring:url value="/usuario/cadastro" var="cadastro"/>
-    <a class="btn btn-default" href="${cadastro}">Novo Usuário</a>
+    <a class="btn btn-info" href="${cadastro}">Novo Usuário</a>
 </div>
 <hr>
 
-<div class="panel-default">
+<div class="card ${message == null ? '&nbsp;' : message}">
     <div class="panel-heading">
         <span>${message == null ? '&nbsp;' : message}</span>
     </div>

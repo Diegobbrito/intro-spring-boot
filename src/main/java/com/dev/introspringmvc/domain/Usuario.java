@@ -15,6 +15,7 @@ public class Usuario {
     @NotEmpty
     @Size(min = 3, max = 50)
     private String nome;
+
     @NotEmpty
     @Size(min = 3, max = 50, message = "Campo requerido entre {min} e {max} caracteres.")
     private String sobrenome;
